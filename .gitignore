@@ -12,3 +12,10 @@
 /phpunit.xml
 .phpunit.result.cache
 ###< phpunit/phpunit ###
+
+### exlusions customs
+.idea/
+migration/*.php
+/public/images/profils/*
+!/public/images/profils/.gitignore
+###
