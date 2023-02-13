@@ -1,19 +1,27 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
-        {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
-        {% block stylesheets %}
-            {{ encore_entry_link_tags('app') }}
-        {% endblock %}
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
 
-        {% block javascripts %}
-            {{ encore_entry_script_tags('app') }}
-        {% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-    </body>
+{#    Balise meta description#}
+    <meta name="description" content="Site du Rugby club du pays Graylois, pour découvrir ce dernier, vous informer ou prendre contact avec le club !">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+{#    Affichage du titre de page suivi du nom du site#}
+    <title>{% block title %}{% endblock %}  - Rugby club du pays Graylois</title>
+
+{#    Block pour le css additionnel#}
+    {% block css %}{% endblock %}
+
+</head>
+<body>
+
+{#    Block pour le contenu des pages#}
+    {% block body %}{% endblock %}
+
+{#    Block pour le js additionnel#}
+    {% block js %}{% endblock %}
+
+</body>
 </html>
