@@ -11,6 +11,15 @@
 {#    Affichage du titre de page suivi du nom du site#}
     <title>{% block title %}{% endblock %}  - Rugby club du pays Graylois</title>
 
+{#    Lien cdn font-Awesome#}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+
+{#    Inclusion css Bootstrap#}
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+
+{#    Inclusion css perso}#}
+    <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+
 {#    Block pour le css additionnel#}
     {% block css %}{% endblock %}
 
@@ -19,6 +28,9 @@
 
 {#    Block pour le contenu des pages#}
     {% block body %}{% endblock %}
+
+{#    inclusion js Bootstrap#}
+    <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
 
 {#    Block pour le js additionnel#}
     {% block js %}{% endblock %}
