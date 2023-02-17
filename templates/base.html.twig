@@ -1,3 +1,6 @@
+{#Variable twig "route" pour contenir le nom de la route chargée (classe active du menu)#}
+{% set route = app.request.attributes.get('_route') %}
+
 <!doctype html>
 <html lang="fr">
 <head>
@@ -25,6 +28,9 @@
 
 </head>
 <body>
+
+{#    Inclusion du menu principal#}
+    {% include 'partials/_main_navbar.html.twig' %}
 
 {#    Block pour le contenu des pages#}
     {% block body %}{% endblock %}

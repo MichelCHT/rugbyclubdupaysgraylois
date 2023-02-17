@@ -2,3 +2,9 @@
 body{
     background-color: #0d6efd;
 }
+
+.main-navbar .main-navbar-logo{
+    width: 300px;
+    margin-left: 50px;
+    margin-right: 400px;
+}
