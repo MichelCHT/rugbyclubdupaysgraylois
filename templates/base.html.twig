@@ -29,8 +29,8 @@
 </head>
 <body>
 
-{#    Inclusion du menu principal#}
-    {% include 'partials/_main_navbar.html.twig' %}
+{#    Inclusion dans un block du menu principal afin de pouvoir changer la configuration de ce dernier #}
+    {% block navbar %}{% include 'partials/_main_navbar.html.twig' %}{% endblock %}
 
 {#    Block pour le contenu des pages#}
     {% block body %}{% endblock %}

@@ -1,0 +1,38 @@
+{#  Utilisation du fichier Base #}
+{% extends 'base.html.twig' %}
+
+{# Titre de la page #}
+{% block title %}Erreur 404{% endblock %}
+
+{% block navbar %}
+
+
+
+{% endblock  %}
+
+{#  Conteneur de la page #}
+{% block body %}
+
+    {#   Grille Bootstrap #}
+    <div class="container-fluid">
+
+        {#        Affichage de l'image d'erreur 404#}
+        <div class="row  my-3 text-uppercase">
+
+            <div>
+                <a class="h2" href="{{ path('main_home') }}">Retour à l'accueil</a>
+            </div>
+
+            <div class="col-12 text-center">
+                <img src="{{ asset('images/error_500.jpg') }}" alt="Erreur 500, problème de serveur" class=" img-fluid col-6">
+            </div>
+
+            <div>
+                <p class="h1 text-center p-3">Erreur 500, problème de serveur.</p>
+                <p class="h4 text-center my-3">Nous nous efforçons de réparer au plus vite !</p>
+            </div>
+
+        </div>
+
+    </div>
+{% endblock %}
