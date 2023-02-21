@@ -2,13 +2,10 @@
 {% extends 'base.html.twig' %}
 
 {# Titre de la page #}
-{% block title %}Erreur 404{% endblock %}
+{% block title %}Erreur 403{% endblock %}
 
-{% block navbar %}
-
-
-
-{% endblock  %}
+{# block laissé vide pour ne pas faire apparaître de navbar lors du message d'erreur #}
+{% block navbar %}{% endblock  %}
 
 {#  Conteneur de la page #}
 {% block body %}
@@ -16,7 +13,7 @@
     {#   Grille Bootstrap #}
     <div class="container-fluid">
 
-        {#        Affichage de l'image d'erreur 404#}
+        {#        Affichage de l'image d'erreur 403 #}
         <div class="row  my-3 text-uppercase">
 
             <div>
