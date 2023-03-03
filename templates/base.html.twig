@@ -1,4 +1,4 @@
-{#Variable twig "route" pour contenir le nom de la route chargée (classe active du menu)#}
+{# Variable twig "route" pour contenir le nom de la route chargée (classe active du menu) #}
 {% set route = app.request.attributes.get('_route') %}
 
 <!doctype html>
@@ -6,39 +6,42 @@
 <head>
     <meta charset="UTF-8">
 
-{#    Balise meta description#}
+    {# Balise meta description #}
     <meta name="description" content="Site du Rugby club du pays Graylois, pour découvrir ce dernier, vous informer ou prendre contact avec le club !">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-{#    Affichage du titre de page suivi du nom du site#}
+    {# Affichage du titre de page suivi du nom du site #}
     <title>{% block title %}{% endblock %}  - Rugby club du pays Graylois</title>
 
-{#    Lien cdn font-Awesome#}
+    {# Lien cdn font-Awesome #}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
 
-{#    Inclusion css Bootstrap#}
+    {# Inclusion css Bootstrap #}
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
 
-{#    Inclusion css perso}#}
+    {# Inclusion css perso #}
     <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
 
-{#    Block pour le css additionnel#}
+    {# Block pour le css additionnel #}
     {% block css %}{% endblock %}
 
 </head>
 <body>
 
-{#    Inclusion dans un block du menu principal afin de pouvoir changer la configuration de ce dernier #}
+    {# Inclusion dans un block du menu principal afin de pouvoir changer la configuration de ce dernier #}
     {% block navbar %}{% include 'partials/_main_navbar.html.twig' %}{% endblock %}
 
-{#    Block pour le contenu des pages#}
+    {# Inclusion des messages flash #}
+    {% include 'partials/_flashes.html.twig' %}
+
+    {# lock pour le contenu des pages #}
     {% block body %}{% endblock %}
 
-{#    inclusion js Bootstrap#}
+    {# inclusion js Bootstrap #}
     <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
 
-{#    Block pour le js additionnel#}
+    {# Block pour le js additionnel #}
     {% block js %}{% endblock %}
 
 </body>

@@ -1,0 +1,27 @@
+{# Utilisation du fichier Base #}
+{% extends 'base.html.twig' %}
+
+{# Titre de la page #}
+{% block title %}Créer un compte{% endblock %}
+
+{# Conteneur de la page #}
+{% block body %}
+
+    {# Grille Bootstrap #}
+    <div class="container-fluid">
+
+        <div class="row">
+            <h1 class="col-12 text-center my-5">CRÉER UN COMPTE</h1>
+        </div>
+
+        {# Formulaire d'inscription #}
+        <div class="row">
+            <div class="col-12 col-md-8 col-lg-7 col-xl-6 col-xxl-5 mx-auto">
+                {{ form( registrationForm ) }}
+            </div>
+
+        </div>
+
+    </div>
+
+{% endblock %}
