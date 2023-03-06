@@ -1,0 +1,55 @@
+{# Utilisation du fichier Base #}
+{% extends 'base.html.twig' %}
+
+{# Titre de la page #}
+{% block title %}Mon profil{% endblock %}
+
+{# Conteneur de la page #}
+{% block body %}
+
+    {# Grille Bootstrap #}
+    <div class="container-fluid">
+
+        <div class="row">
+            <h1 class="col-12 text-center my-5">MON PROFIL</h1>
+        </div>
+
+        <div class="row">
+           <div class="col-12 col-md-10 mb-5 mx-auto">
+
+               <div class="row">
+
+                    {# Affichage de la photo de profil par défault #}
+                    <div class="col-12 col-md-3 bg-black px-2 py-3 text-center">
+
+                        <div class="row">
+                            <div class="col-10 mx-auto d-flex justify-content-center align-items-center">
+
+                                <img src="{{ asset('images/default_profile_picture.jpg') }}" alt="Photo de profil par défaut" class="img-fluid img-thumbnail">
+
+                            </div>
+                        </div>
+                    </div>
+
+                   {# Affichage des informations du profil #}
+                   <div class="col-12 col-md-9 px-2 py-3 bg-dark d-flex justify-content-center align-items-center">
+
+                       <ul class="list-group col-12 col-md-8 p-0">
+                           <li class="list-group-item bg-black text-white">Pseudonyme : <span class="text-info">{{ app.user.pseudonym }}</span></li>
+                           <li class="list-group-item bg-black text-white">Adresse mail : <span class="text-info">{{ app.user.email }}</span></li>
+                           <li class="list-group-item bg-black text-white">Date d'inscription : <span class="text-info">{{ app.user.registrationDate|format_datetime(locale='fr', pattern="'le' EEEE dd MMMM YYYY à HH'h'mm") }}</span></li>
+                           <li class="list-group-item bg-black text-white">Compte : <span class="text-info">{{ is_granted('ROLE_ADMIN') ? 'Administrateur' : 'Utilisateur' }}</span></li>
+                       </ul>
+
+
+
+                   </div>
+               </div>
+
+           </div>
+        </div>
+
+    </div>
+
+
+{% endblock %}

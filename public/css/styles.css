@@ -10,9 +10,14 @@ body{
 }
 
 .navbar{
-    background-image: linear-gradient(to right, white, transparent 1000px), url("/../images/bandeau_1.jpg");
+    background-image: linear-gradient(to right, white, transparent 1000px), url("/../images/banner_picture.jpg");
     background-size: cover;
     background-position: right
+}
+
+/* L'item "Mon Compte" qui est un paragraphe, bénéficie d'un curseur "main" comme les autres liens de la navbar */
+#my-account-cursor{
+    cursor: pointer;
 }
 
 /* Menu déroulants au passage du pointeur et taille de police des indications dans les champs de saisie à partir de la disparition du "menu burger" Bootstrap */

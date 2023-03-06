@@ -30,15 +30,16 @@
 
                         {# Menu déroulant#}
                         <ul class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="profil-dropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                XXXXXXX</a>
+
+                                <li class="nav-link dropdown-toggle my-auto" id="my-account-cursor">Mon compte</li>
 
                             {# Boutons du menu déroulant #}
                             <div class="dropdown-menu" aria-labelledby="profil-dropdown">
 
-                                <a class="dropdown-item" href="#">Action</a>
+                                {# Affichage du pseudonyme de l'utilisateur connecté #}
+                                <p class="dropdown-item my-auto" >{{ app.user.pseudonym }}</p>
                                 <hr class="dropdown-divider">
-                                <a class="dropdown-item" href="#">Mon profil</a>
+                                <a class="dropdown-item" href="{{ path('main_profile') }}">Mon profil</a>
                                 <a class="dropdown-item" href="{{ path('app_logout') }}">Déconnexion</a>
                             </div>
 

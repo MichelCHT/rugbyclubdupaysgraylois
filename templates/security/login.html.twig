@@ -31,7 +31,7 @@
                 </div>
 
                 {# Champ password #}
-                <div class="col-12 col-md-8 col-lg-7 col-xl-6 col-xxl-5 mx-auto">
+                <div class="col-12 col-md-8 col-lg-7 col-xl-6 col-xxl-5 mx-auto m-4">
                     <label class="form-label" for="inputPassword">Mot de passe</label>
                     <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
                 </div>
@@ -40,7 +40,7 @@
                 <input type="hidden" name="_csrf_token" value="{{ csrf_token ('authenticate') }}">
 
                 {# Bouton de validation #}
-                <div class="col-12 col-md-8 col-lg-7 col-xl-6 col-xxl-5 mx-auto">
+                <div class="col-12 col-md-8 col-lg-7 col-xl-6 col-xxl-5 mx-auto m-5">
                     <input type="submit" class="btn btn-outline-secondary w-100" value="Connexion">
                 </div>
 

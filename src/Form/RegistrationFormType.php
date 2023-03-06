@@ -28,11 +28,11 @@ class RegistrationFormType extends AbstractType
             ->add('email', EmailType::class, [
                 'label' => 'Adresse email',
                 'attr' => [
-                    'placeholder' => "Adresse email valide"
+                    'placeholder' => "Adresse email valide",
                 ],
                 'constraints' => [
                     New NotBlank([
-                        'message' => 'Merci de renseigner une adresse mail.'
+                        'message' => 'Merci de renseigner une adresse mail.',
                     ]),
                     New Email([
                         'message' => 'L\'adresse email {{ value }} n\'est pas valide.',
@@ -53,7 +53,7 @@ class RegistrationFormType extends AbstractType
                 'second_options' => [
                     'label' => 'Confirmation du mot de passe',
                     'attr' => [
-                        'placeholder' => "Identique au mot de passe"
+                        'placeholder' => "Identique au mot de passe",
                     ],
                 ],
                 'mapped' => false,
@@ -71,7 +71,7 @@ class RegistrationFormType extends AbstractType
                     ]),
                     new Regex([
                         'pattern' => "/^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[ !\"#\$%&\'()*+,\-.\/:;<=>?@[\\\\\]\^_`{\|}~]).{8,4096}$/u",
-                        'message' => 'Votre mot de passe doit être composé d\'au moins une minuscule, une majuscule, un chiffre et un caractère spécial.'
+                        'message' => 'Votre mot de passe doit être composé d\'au moins une minuscule, une majuscule, un chiffre et un caractère spécial.',
                     ]),
                 ],
             ])
@@ -98,7 +98,7 @@ class RegistrationFormType extends AbstractType
             ->add('save', SubmitType::class,[
                 'label' => 'Créer un compte',
                 'attr' => [
-                    'class' => 'btn btn-outline-secondary w-100',
+                    'class' => 'btn btn-outline-secondary w-100 my-4',
                 ],
             ])
 
