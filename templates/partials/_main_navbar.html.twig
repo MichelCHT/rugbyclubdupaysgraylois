@@ -17,46 +17,53 @@
         {# Conteneur principal des boutons#}
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="#">Lien 1</a>
+
+                {# Liste déroulante liée aux publications #}
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle cursor-pointer" id="navbarDropdown" data-bs-toggle="dropdown" aria-expanded="false">Publications</a>
+
+                    {# Boutons du menu déroulant #}
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Toutes les publications</a>
+
+                    {# Affichage du lien réservé au(x) compte(s) admin #}
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <a class="dropdown-item" href="{{ path('new_publication') }}">Créer une publication</a>
+                    {% endif %}
+
+                    </ul>
                 </li>
 
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Lien 2</a>
-                </li>
+                {# Affichage si utilisateur connecté #}
+                {% if  app.user%}
 
-                    {# Affichage si utilisateur connecté #}
-                    {% if  app.user%}
+                    {# Liste déroulante liée aux comptes #}
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle cursor-pointer" id="navbarDropdown" data-bs-toggle="dropdown" aria-expanded="false">Mon compte</a>
 
-                        {# Menu déroulant#}
-                        <ul class="nav-item dropdown">
+                        {# Boutons du menu déroulant #}
+                        <ul class="dropdown-menu" aria-labelledby="profil-dropdown">
 
-                                <li class="nav-link dropdown-toggle my-auto" id="my-account-cursor">Mon compte</li>
-
-                            {# Boutons du menu déroulant #}
-                            <div class="dropdown-menu" aria-labelledby="profil-dropdown">
-
-                                {# Affichage du pseudonyme de l'utilisateur connecté #}
-                                <p class="dropdown-item my-auto" >{{ app.user.pseudonym }}</p>
-                                <hr class="dropdown-divider">
-                                <a class="dropdown-item" href="{{ path('main_profile') }}">Mon profil</a>
-                                <a class="dropdown-item" href="{{ path('app_logout') }}">Déconnexion</a>
-                            </div>
-
-                                    {# Affichage si utilisateur non connecté #}
-                                    {% else  %}
-
-                                        {# lien de la page d'inscription#}
-                                        <li>
-                                            <a class="nav-link{{ route == 'app_register' ? ' active' }}" href="{{ path('app_register') }}">Créer un compte</a>
-                                        </li>
-
-                                        <li>
-                                            <a class="nav-link{{ route == 'app_login' ? ' active' }}" href="{{ path('app_login') }}">Connexion</a>
-                                        </li>
-
-                                    {% endif %}
+                            {# Affichage du pseudonyme de l'utilisateur connecté #}
+                            <p class="dropdown-item my-auto" >{{ app.user.pseudonym }}</p>
+                            <hr class="dropdown-divider">
+                            <a class="dropdown-item" href="{{ path('main_profile') }}">Mon profil</a>
+                            <a class="dropdown-item" href="{{ path('app_logout') }}">Déconnexion</a>
                         </ul>
+
+                {# Affichage si utilisateur non connecté #}
+                {% else  %}
+
+                    {# lien de la page d'inscription#}
+                    <li>
+                        <a class="nav-link{{ route == 'app_register' ? ' active' }}" href="{{ path('app_register') }}">Créer un compte</a>
+                    </li>
+
+                    <li>
+                        <a class="nav-link{{ route == 'app_login' ? ' active' }}" href="{{ path('app_login') }}">Connexion</a>
+                    </li>
+
+                {% endif %}
             </ul>
         </div>
     </div>

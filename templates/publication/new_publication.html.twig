@@ -1,0 +1,28 @@
+{# Utilisation du fichier Base #}
+{% extends 'base.html.twig' %}
+
+{# Titre de la page #}
+{% block title %}Créer une nouvelle publication{% endblock %}
+
+{# Conteneur de la page #}
+{% block body %}
+
+    {# Grille Bootstrap #}
+    <div class="container-fluid">
+
+        <div class="row">
+            <h1 class="col-12 text-center my-5">CRÉER UNE NOUVELLE PUBLICATION</h1>
+        </div>
+
+        <div class="row">
+            <div class="col-12 col-md-8 col-lg-7 col-xl-6 col-xxl-5 mx-auto">
+
+                {# Affichage du formulaire de création d'une publication #}
+                {{ form( new_publication_form ) }}
+            </div>
+
+        </div>
+
+    </div>
+
+{% endblock %}

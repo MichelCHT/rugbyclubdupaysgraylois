@@ -15,8 +15,8 @@ body{
     background-position: right
 }
 
-/* L'item "Mon Compte" qui est un paragraphe, bénéficie d'un curseur "main" comme les autres liens de la navbar */
-#my-account-cursor{
+/* Les items "Mon Compte" et "Publications" qui sont des paragraphes, bénéficient d'un curseur "main" comme les autres liens de la navbar */
+.cursor-pointer{
     cursor: pointer;
 }
 
@@ -25,6 +25,7 @@ body{
     .dropdown:hover > .dropdown-menu{
         display: block;
     }
+
     ::placeholder {
         font-size: 0.8rem;
     }
