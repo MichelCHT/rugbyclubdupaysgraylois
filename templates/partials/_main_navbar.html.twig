@@ -24,7 +24,7 @@
 
                     {# Boutons du menu déroulant #}
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Toutes les publications</a>
+                        <a class="dropdown-item" href="{{ path('publication_list') }}">Toutes les publications</a>
 
                     {# Affichage du lien réservé au(x) compte(s) admin #}
                     {% if is_granted('ROLE_ADMIN') %}

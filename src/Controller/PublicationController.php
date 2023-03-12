@@ -51,4 +51,18 @@ class PublicationController extends AbstractController
         ]);
     }
 
+    /*
+     * Contrôleur de la page listant toutes les publications
+     */
+    #[Route('/publications/liste/', name: 'publication_list')]
+    Public function publicationList(ManagerRegistry $doctrine): response
+    {
+        $publicationRepo = $doctrine->getRepository( Publication::class );
+        $publications = $publicationRepo->findAll();
+        Return $this->render('publication/publication_list.html.twig', [
+            'publications' => $publications,
+        ]);
+    }
+
+
 }
