@@ -45,6 +45,12 @@ class PublicationController extends AbstractController
 
             // Message de succès
             $this->addFlash('success', 'Publication éditée avec succès.');
+
+            // Redirection sur la page de l'article créé
+            Return $this->redirectToRoute('publication_view', [
+                'slug' => $newPublication->getSlug(),
+            ]);
+
         }
         return $this->render('publication/new_publication.html.twig', [
             'new_publication_form' => $form->createView(),
@@ -64,5 +70,15 @@ class PublicationController extends AbstractController
         ]);
     }
 
+    /*
+     * Contrôleur de la page pour lire un article
+     */
+    #[Route('/publication/{slug}/', name: 'publication_view')]
+    Public function publicationView(Publication $publication): response
+    {
+        Return $this->render('publication/publication_view.html.twig', [
+            'publication' => $publication,
+        ]);
+    }
 
 }

@@ -25,13 +25,13 @@
                         <div class="card bg-white">
                             <div class="card-header">
                                 <div class="p-3 mb-2">
-                                    <a class="text-decoration-none" href="…">{{ publication.title }}</a>
+                                    <a class="text-decoration-none" href="{{ path('publication_view', {'slug':publication.slug}) }}">{{ publication.title }}</a>
                                 </div>
                             </div>
                             <div class="card-body">
                                 <div class="mb-2">
-                                    {{ publication.content|excerpt(25)}}...
-                                    <a class=" text-decoration-none " href="…">Lire la suite</a>
+                                    {{ publication.content|excerpt(25)}}
+                                    <a class=" text-decoration-none " href="{{ path('publication_view', {'slug':publication.slug}) }}">Lire la suite</a>
                                 </div>
                                 <footer class="blockquote-footer my-2">Publié le <strong>{{ publication. publicationDate|format_datetime(locale='fr', pattern="EEEE dd MMMM YYYY à HH'h'mm") }}</strong> par <strong>{{ publication.author.pseudonym }}</strong> </footer>
                             </div>
