@@ -26,12 +26,14 @@
 
                     <div class="card-body">
 
+                        {# Date et auteur de la publication #}
                         <div class="card-body">
                             <footer class="blockquote-footer my-2">Publié le <strong>{{ publication. publicationDate|format_datetime(locale='fr', pattern="EEEE dd MMMM YYYY à HH'h'mm") }}</strong> par <strong>{{ publication.author.pseudonym }}</strong></footer>
                         </div>
 
+                        {# Contenu de la publication #}
                         <div class="mb-2">
-                            {{ publication.content }}
+                            {{ publication.content|purify }}
                         </div>
 
                 </div>

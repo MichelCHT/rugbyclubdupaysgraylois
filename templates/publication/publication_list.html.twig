@@ -19,8 +19,8 @@
 
                 <div class="row">
 
-                    {# Boucle pour afficher toutess les publications #}
-                    {% for publication in publications %}
+                    {# Boucle pour afficher toutes les publications, de la plus récente à la plus ancienne #}
+                    {% for publication in publications|reverse %}
 
                         <div class="card bg-white">
                             <div class="card-header">
@@ -30,7 +30,7 @@
                             </div>
                             <div class="card-body">
                                 <div class="mb-2">
-                                    {{ publication.content|excerpt(25)}}
+                                    {{ publication.content|striptags|excerpt(25)}}
                                     <a class=" text-decoration-none " href="{{ path('publication_view', {'slug':publication.slug}) }}">Lire la suite</a>
                                 </div>
                                 <footer class="blockquote-footer my-2">Publié le <strong>{{ publication. publicationDate|format_datetime(locale='fr', pattern="EEEE dd MMMM YYYY à HH'h'mm") }}</strong> par <strong>{{ publication.author.pseudonym }}</strong> </footer>
