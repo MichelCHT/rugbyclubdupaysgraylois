@@ -3,6 +3,10 @@ twig:
     form_themes: ['bootstrap_5_layout.html.twig']
     default_path: '%kernel.project_dir%/templates'
 
+    # Paramètre global contenant le nom du site
+    globals:
+        site_name: 'Rugby club du pays Graylois'
+
 when@test:
     twig:
         strict_variables: true
