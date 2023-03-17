@@ -3,9 +3,12 @@ twig:
     form_themes: ['bootstrap_5_layout.html.twig']
     default_path: '%kernel.project_dir%/templates'
 
-    # Paramètre global contenant le nom du site
     globals:
+        # Paramètre global contenant le nom du site
         site_name: 'Rugby club du pays Graylois'
+
+        # Paramètre global de la clé publique Google Recaptcha
+        google_recaptcha_site_key: '%env(GOOGLE_RECAPTCHA_SITE_KEY)%'
 
 when@test:
     twig:

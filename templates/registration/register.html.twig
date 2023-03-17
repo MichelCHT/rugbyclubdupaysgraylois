@@ -16,12 +16,32 @@
 
         {# Formulaire d'inscription #}
         <div class="row">
+
             <div class="col-12 col-md-8 col-lg-7 col-xl-6 col-xxl-5 mx-auto">
-                {{ form( registrationForm ) }}
+
+                {{ form_start( registrationForm ) }}
+                    {{ form_errors( registrationForm ) }}
+                    {{ form_row( registrationForm.email ) }}
+                    {{ form_row( registrationForm.pseudonym ) }}
+                    {{ form_row( registrationForm.plainPassword ) }}
+                    <div class="mb-2">
+                        <div class="mb-2">Captcha de sécurité</div>
+                        <div class="g-recaptcha" data-sitekey="{{ google_recaptcha_site_key }}"></div>
+                     </div>
+                    {{ form_row( registrationForm.save ) }}
+                {{ form_end( registrationForm ) }}
+
             </div>
 
         </div>
 
     </div>
 
+{% endblock %}
+
+
+{% block js %}
+
+    {# Fichier JS pour le fonctionnement du service Google recaptcha #}
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 {% endblock %}
