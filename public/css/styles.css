@@ -41,3 +41,17 @@ body{
 input:placeholder-shown {
     text-overflow: ellipsis;
 }
+
+/* Menus paginations */
+.pagination .page-item .page-link{
+    background-color: darkgray;
+    color: black;
+}
+
+.pagination .page-item.disabled .page-link, .pagination .page-item.active .page-link{
+    color: grey;
+}
+
+.pagination .page-item a.page-link:hover{
+    background-color: slategrey;
+}

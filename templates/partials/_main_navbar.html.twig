@@ -20,7 +20,7 @@
 
                 {# Liste déroulante liée aux publications #}
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle cursor-pointer" id="navbarDropdown" data-bs-toggle="dropdown" aria-expanded="false">Publications</a>
+                    <a class="nav-link dropdown-toggle cursor-pointer" id="navbarDropdown" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-marker"></i> Publications</a>
 
                     {# Boutons du menu déroulant #}
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -39,7 +39,7 @@
 
                     {# Liste déroulante liée aux comptes #}
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle cursor-pointer" id="navbarDropdown" data-bs-toggle="dropdown" aria-expanded="false">Mon compte</a>
+                        <a class="nav-link dropdown-toggle cursor-pointer" id="navbarDropdown" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-user mx-1"></i>Mon compte</a>
 
                         {# Boutons du menu déroulant #}
                         <ul class="dropdown-menu" aria-labelledby="profil-dropdown">
@@ -56,11 +56,11 @@
 
                     {# lien de la page d'inscription#}
                     <li>
-                        <a class="nav-link{{ route == 'app_register' ? ' active' }}" href="{{ path('app_register') }}">Créer un compte</a>
+                        <a class="nav-link{{ route == 'app_register' ? ' active' }}" href="{{ path('app_register') }}"><i class="fa-solid fa-user-plus mx-1"></i>Créer un compte</a>
                     </li>
 
                     <li>
-                        <a class="nav-link{{ route == 'app_login' ? ' active' }}" href="{{ path('app_login') }}">Connexion</a>
+                        <a class="nav-link{{ route == 'app_login' ? ' active' }}" href="{{ path('app_login') }}"><i class="fa-solid fa-bolt-lightning mx-1"></i>Connexion</a>
                     </li>
 
                 {% endif %}

@@ -14,13 +14,24 @@
             <h1 class="col-12 text-center my-5">LISTE DES PUBLICATIONS</h1>
         </div>
 
+        {# Affichage de la pagination si présence de publications#}
+        {% if publications is not empty %}
+            <div class="row">
+                    <div class="col-12 my-3 text-center">
+                        <div class="d-inline-block">
+                            {{ knp_pagination_render( publications ) }}
+                        </div>
+                    </div>
+                </div>
+        {% endif %}
+
         <div class="row">
             <div class="mx-auto">
 
                 <div class="row">
 
                     {# Boucle pour afficher toutes les publications, de la plus récente à la plus ancienne #}
-                    {% for publication in publications|reverse %}
+                    {% for publication in publications %}
 
                         <div class="card bg-white">
                             <div class="card-header">
@@ -49,6 +60,17 @@
             </div>
 
         </div>
+
+        {# Affichage de la pagination si présence de publications#}
+        {% if publications is not empty %}
+            <div class="row">
+                <div class="col-12 my-3 text-center">
+                    <div class="d-inline-block">
+                        {{ knp_pagination_render( publications ) }}
+                    </div>
+                </div>
+            </div>
+        {% endif %}
 
     </div>
 

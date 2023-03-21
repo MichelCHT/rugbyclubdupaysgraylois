@@ -5,10 +5,12 @@ namespace App\Controller;
 use App\Entity\Publication;
 use App\Form\NewPublicationFormType;
 use Doctrine\Persistence\ManagerRegistry;
+use Knp\Component\Pager\PaginatorInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Annotation\Route;
 
 class PublicationController extends AbstractController
@@ -61,10 +63,35 @@ class PublicationController extends AbstractController
      * Contrôleur de la page listant toutes les publications
      */
     #[Route('/publications/liste/', name: 'publication_list')]
-    Public function publicationList(ManagerRegistry $doctrine): response
+    Public function publicationList(ManagerRegistry $doctrine, Request $request, PaginatorInterface $paginator): response
     {
-        $publicationRepo = $doctrine->getRepository( Publication::class );
-        $publications = $publicationRepo->findAll();
+
+        // Récupération du numéro de page demandé en URL
+        $requestedPage = $request->query->getInt('page', 1);
+
+        // Vérification de numéro positif
+        if($requestedPage < 1){
+            throw new NotFoundHttpException();
+        }
+
+        $em = $doctrine->getManager();
+
+        // Requête DQL pour récupérer les publications
+        $query = $em->createQuery('SELECT a FROM App\Entity\Publication a ORDER BY a.publicationDate DESC');
+
+        // Récupération des publications
+        $publications = $paginator->paginate(
+
+            // Requête créée précedemment
+            $query,
+
+            // Numéro de la page demandée
+            $requestedPage,
+
+            // Nombre d'articles affichés par page
+            10
+        );
+
         Return $this->render('publication/publication_list.html.twig', [
             'publications' => $publications,
         ]);
