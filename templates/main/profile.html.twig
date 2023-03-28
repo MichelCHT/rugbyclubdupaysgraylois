@@ -19,14 +19,23 @@
 
                <div class="row">
 
-                    {# Affichage de la photo de profil par défault #}
                     <div class="col-12 col-md-3 bg-black px-2 py-3 text-center">
 
                         <div class="row">
                             <div class="col-10 mx-auto d-flex justify-content-center align-items-center">
 
-                                <img src="{{ asset('images/default_profile_picture.jpg') }}" alt="Photo de profil par défaut" class="img-fluid img-thumbnail">
+                                {% if app.user.photo is null %}
+                                     {# Affichage de la photo de profil par défault #}
+                                    <img src="{{ asset('images/default_profile_picture.jpg') }}" alt="Photo de profil par défaut" class="img-fluid img-thumbnail">
+                                {% else %}
+                                    <img src="{{ asset('images/profils/' ~ app.user.photo )|imagine_filter('profil') }}" alt="" class="img-fluid img-thumbnail">
+                                {% endif %}
 
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <a href="{{ path('main_edit_photo') }}">Modifier la photo de profil</a>
                             </div>
                         </div>
                     </div>
