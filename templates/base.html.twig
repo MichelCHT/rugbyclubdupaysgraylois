@@ -14,6 +14,9 @@
     {# Affichage du titre de page suivi du nom du site #}
     <title>{% block title %}{% endblock %} - {{ site_name }}</title>
 
+    {# Lien cdn Google fonts #}
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cabin">
+
     {# Lien cdn font-Awesome #}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
 
@@ -37,6 +40,9 @@
 
     {# Block pour le contenu des pages #}
     {% block body %}{% endblock %}
+
+    {# Block pour le footer #}
+    {% include 'partials/_footer.html.twig' %}
 
     {# inclusion js Bootstrap #}
     <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
