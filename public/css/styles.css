@@ -13,7 +13,7 @@ body{
 .navbar{
     background-image: linear-gradient(to right, white, transparent 1000px), url("/../images/banner_picture.jpg");
     background-size: cover;
-    background-position: right
+    background-position: right;
 }
 
 /* Les items "Mon Compte" et "Publications" qui sont des paragraphes, bénéficient d'un curseur "main" comme les autres liens de la navbar */
@@ -59,4 +59,8 @@ input:placeholder-shown {
 
 Footer section{
     background-color: black;
+}
+
+.circle{
+    list-style-type: circle;
 }

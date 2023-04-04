@@ -1,0 +1,54 @@
+{# Utilisation du fichier Base #}
+{% extends 'base.html.twig' %}
+
+{# Titre de la page #}
+{% block title %}Accueil{% endblock %}
+
+{# Conteneur de la page #}
+{% block body %}
+
+    {# Grille Bootstrap #}
+    <div class="container-fluid">
+
+        <div class="row">
+            <h1 class="col-12 text-center text-uppercase my-5">Conditions générales d'utilisation</h1>
+        </div>
+
+        <div class="row">
+
+            <div class="col-10 col-md-8 mx-auto">
+
+                <h4>Destination du site, droit de l’utilisateur</h4>
+                <p class="mb-4 mt-md-3 mb-md-5">Le site internet du Rugby Club du Pays Graylois est un blog à caractère informatif avec possibilité pour l’utilisateur de créer un compte afin de pouvoir commenter les différentes publications proposées, en évitant tous propos insultants, racistes, sexistes, politiques ou portant atteinte, d’une manière ou d’une autre, à l’intégrité de personnes physiques ou morales.</p>
+
+                <h4>Obligations de l’utilisateur</h4>
+                <p class="mb-1 mt-md-3 mb-md-2">Lors de la création d’un compte, l’utilisateur s’engage :</p>
+                <ul class="circle mb-4 mb-md-5">
+                    <li>à maintenir le caractère confidentiel de ses identifiants de connexion.</li>
+                    <li>à utiliser le site conformément à sa destination mentionnée ci-dessus.</li>
+                    <li>à ne pas tenter de nuire au bon fonctionnement du site.</li>
+                </ul>
+
+                <h4>Dispositions relatives à la propriété intellectuelle</h4>
+                <p class="mb-4 mt-md-3 mb-md-5">Toutes les informations disponibles sur ce site relèvent de la propriété de l’éditeur et sont protégés par le droit de la propriété intellectuelle et plus particulièrement le droit d’auteur.
+                Les informations figurant sur le site sont uniquement disponibles à des fins de consultation par les utilisateurs, à défaut d’un accord préalable et exprès.
+                Toute utilisation totale ou partielle du site ou de son contenu, par quelque procédé que ce soit ou sur quelque support que ce soit, à des fins commerciales ou publicitaires, est interdite et engage la responsabilité de l’utilisateur.
+                L’utilisateur à toutefois la possibilité d’utiliser ces informations à des fins personnelles.</p>
+
+                    <h4>Responsabilités de l’éditeur du site</h4>
+                <p class="mb-1 mt-md-3 mb-md-2">L’éditeur de ce site met tout en œuvre pour assurer le bon fonctionnement du-dit site, l’exactitude des informations fournies ainsi que leurs mises à jour ; néanmoins, il décline toutes responsabilités dans les cas suivants :</p>
+                <ul class="circle mb-4 mb-md-5">
+                    <li>inaccessibilité du site pour des raisons techniques.</li>
+                    <li>inexactitudes transmises par un autre site via un lien interne.</li>
+                    <li>non-respect par un utilisateur des obligations de ce dernier.</li>
+                </ul>
+                <p class="mb-4 mt-md-3 mb-md-5 pb-md-5">En cas de constatation d’une utilisation anormale du site ou de contentieux, merci de prendre contact avec l’éditeur.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+{% endblock %}

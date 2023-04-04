@@ -79,4 +79,12 @@ class MainController extends AbstractController
         return $this->render('main/legal_notice.html.twig');
     }
 
+    /**
+     * Contrôleur de la page des conditions générales d'utilisation
+     */
+    #[Route('/conditions-generales-d-utilisation/', name: 'terms_of_service')]
+    public function termsOfService(): Response
+    {
+        return $this->render('main/terms_of_service.html.twig');
+    }
 }
