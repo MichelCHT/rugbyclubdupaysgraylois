@@ -64,6 +64,7 @@ class RegistrationFormType extends AbstractType
                     ]),
                     new Length([
                         'min' => 12,
+
                         // max length allowed by Symfony for security reasons
                         'max' => 4096,
                         'minMessage' => 'Votre mot de passe doit contenir au moins {{ limit }} caractères.',
@@ -79,7 +80,7 @@ class RegistrationFormType extends AbstractType
             ->add('pseudonym', TextType::class, [
                 'label' => 'Pseudonyme',
                 'attr' => [
-                    'placeholder' => "Ex : Morgan"
+                    'placeholder' => "Ex : Fanny"
                 ],
                 'constraints' => [
                     new NotBlank([
@@ -99,15 +100,6 @@ class RegistrationFormType extends AbstractType
                 'label' => 'Créer un compte',
                 'attr' => [
                     'class' => 'btn btn-outline-secondary w-100 my-4',
-                ],
-            ])
-
-            ->add('agreeTerms', CheckboxType::class, [
-                'mapped' => false,
-                'constraints' => [
-                    new IsTrue([
-                        'message' => 'You should agree to our terms.',
-                    ]),
                 ],
             ])
         ;

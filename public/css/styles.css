@@ -57,10 +57,20 @@ input:placeholder-shown {
     background-color: slategrey;
 }
 
+.page-link{
+    padding: 8px;
+}
+
+/* Couleur du footer */
 Footer section{
     background-color: black;
 }
 
+/* Liste à puce des CGU */
 .circle{
     list-style-type: circle;
+}
+
+.form-check-input{
+    border-color: black;
 }

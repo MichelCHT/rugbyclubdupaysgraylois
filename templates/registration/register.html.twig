@@ -11,7 +11,7 @@
     <div class="container-fluid">
 
         <div class="row">
-            <h1 class="col-12 text-center my-5">CRÉER UN COMPTE</h1>
+            <h1 class="col-12 text-center my-5 pb-lg-5">CRÉER UN COMPTE</h1>
         </div>
 
         {# Formulaire d'inscription #}
@@ -24,11 +24,24 @@
                     {{ form_row( registrationForm.email ) }}
                     {{ form_row( registrationForm.pseudonym ) }}
                     {{ form_row( registrationForm.plainPassword ) }}
+
+                    {# Recaptcha Google #}
                     <div class="mb-2">
                         <div class="mb-2">Captcha de sécurité</div>
                         <div class="g-recaptcha" data-sitekey="{{ google_recaptcha_site_key }}"></div>
-                     </div>
+                    </div>
+
                     {{ form_row( registrationForm.save ) }}
+
+                    {# Checkbox d'acceptation des CGU avec lien vers ces dernières #}
+                    <div class="mb-5">
+                        <div class="form-check">
+                            <label for="registration_form_agreeTerms"></label>
+                            <input type="checkbox" id="registration_form_agreeTerms" name="registration_form[agreeTerms]" required="required" class="form-check-input" value="1">
+                        <label class="registration_form[agreeTerms]">Accepter les <a href="{{ path('terms_of_service') }} " class="text-dark">CGU</a></label>
+                        </div>
+                    </div>
+
                 {{ form_end( registrationForm ) }}
 
             </div>
@@ -38,7 +51,6 @@
     </div>
 
 {% endblock %}
-
 
 {% block js %}
 

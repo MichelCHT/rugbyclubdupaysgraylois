@@ -11,37 +11,40 @@
     <div class="container-fluid">
 
         <div class="row">
-            <h2 class="col-12 text-center text-uppercase my-5">{{ publication.title }}</h2>
-        </div>
-
-        <div class="row">
-            <a class="text-decoration-none text-white" href="{{ path('publication_list') }}">Retour vers la liste des publications</a>
+            <h2 class="col-12 text-center text-uppercase my-5 pb-lg-5">{{ publication.title }}</h2>
         </div>
 
         <div class="row">
 
-            <div class="col-12">
+            <div class="col-8 mx-auto">
 
                 <div class="card">
 
                     <div class="card-body">
-
-                        {# Date et auteur de la publication #}
-                        <div class="card-body">
-                            <footer class="blockquote-footer my-2">Publié le <strong>{{ publication. publicationDate|format_datetime(locale='fr', pattern="EEEE dd MMMM YYYY à HH'h'mm") }}</strong> par <strong>{{ publication.author.pseudonym }}</strong></footer>
-                        </div>
 
                         {# Contenu de la publication #}
                         <div class="mb-2">
                             {{ publication.content|purify }}
                         </div>
 
-                </div>
+                        {# Date et auteur de la publication #}
+                        <div class="card-body">
+                            <footer class="blockquote-footer my-2">Publié le <strong>{{ publication. publicationDate|format_datetime(locale='fr', pattern="EEEE dd MMMM YYYY à HH'h'mm") }}</strong> par <strong>{{ publication.author.pseudonym }}</strong></footer>
+                        </div>
+
+                    </div>
 
             </div>
 
         </div>
 
-    </div>
+            <div class="row">
+                <div class="text-center col-12">
+                    <a class="text-decoration-none text-dark" href="{{ path('publication_list') }}">Retour vers la liste des publications</a>
+                </div>
+            </div>
+
+
+        </div>
 
 {% endblock %}

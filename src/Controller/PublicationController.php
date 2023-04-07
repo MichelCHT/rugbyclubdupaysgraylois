@@ -89,7 +89,7 @@ class PublicationController extends AbstractController
             $requestedPage,
 
             // Nombre d'articles affichés par page
-            10
+            12
         );
 
         Return $this->render('publication/publication_list.html.twig', [

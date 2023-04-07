@@ -1,106 +1,108 @@
 
     <!-- Footer -->
-    <footer class="row">
-        <div>
-            <img src="{{ asset('images/footer_picture.png') }}" alt="" class="w-100">
-        </div>
-        <!-- Grid container -->
-        <div class="text-center text-lg-start text-white">
-            <!-- Section: Links -->
-            <section>
-                <!--Grid row-->
-                <div class="row">
-
-                    <!-- Grid column -->
-                    <div class="col-md-4 col-lg-4 col-xl-4 ps-lg-5 ms-lg-5 ms-xl-5 mt-3">
-                        <h6 class="text-uppercase mb-4 font-weight-bold">Liens utilisateur</h6>
-                        <p><a class="text-white" href="{{ path('publication_list') }}">Liste des publications</a></p>
-
-                        {% if app.user%}
-                            <p><a class="text-white" href="{{ path('main_profile') }}">Mon profil</a></p>
-                            <p><a class="text-white" href="{{ path('app_logout') }}">Déconnexion</a></p>
-                        {% else %}
-                            <p><a class="text-white" href="{{ path('app_login') }}">Connexion</a></p>
-                        {% endif %}
-
-                        <p><a class="text-white" href="{{ path('legal_notice') }}">Mentions légales</a></p>
-
-                        <p><a class="text-white text-uppercase" href="{{ path('terms_of_service') }}">Cgu</a></p>
-
-                    </div>
-
-                    <!-- Grid column -->
-                    <hr class="w-75 mx-auto clearfix d-md-none" />
-
-                    <!-- Grid column -->
-                    <div class="col-md-4 col-lg-3 col-xl-3 me-lg-5 ms-xl-1 me-xl-0 mt-3">
-                        <h6 class="text-uppercase mb-4 font-weight-bold">Contact</h6>
-                        <p><i class="fas fa-home me-1"></i> Stade Marcel Perrey
-                            <br>70100 Arc-lès-Gray</p>
-                        <p><i class="fas fa-envelope me-2"></i><a href="mailto:didier.aubry474@orange.fr" class="text-white">didier.aubry474@orange.fr</a></p>
-                        <p><i class="fas fa-phone me-2"></i>03 84 32 87 42</p>
-                    </div>
-
-                    <hr class="w-75 mx-auto clearfix d-md-none" />
-
-                    <div class="col-md-4 col-lg-3 col-xl-4 ms-xl-5 mt-3">
-
-                        <h6 class="text-uppercase mb-4 font-weight-bold">Liens utiles</h6>
-
-                        <p><a class="text-white" href="https://www.facebook.com/HauteSaoneRUGBY/" target="_blank">Haute-Saône Rugby (Facebook)</a></p>
-
-                        <p><a class="text-white" href="https://www.rugbybgfc.fr/" target="_blank">Ligue de rugby Bourgogne Franche-Comté</a></p>
-
-                        <p><a class="text-white" href="https://www.ffr.fr/" target="_blank">Fédération Française de rugby</a></p>
-
-                        <p><a class="text-white" href="https://ovale2.ffr.fr/" target="_blank">Oval-e</a></p>
-
-                    </div>
-
-                </div>
-
-                <!-- Grid column -->
-            </section>
-
-            <section>
+    <footer class="mt-3 mt-lg-5">
+        <div class="row">
+            <div>
+                <img src="{{ asset('images/footer_picture.png') }}" alt="" class="w-100">
+            </div>
+            <!-- Grid container -->
+            <div class="text-center text-lg-start text-white">
+                <!-- Section: Links -->
+                <section>
+                    <!--Grid row-->
                     <div class="row">
-                        <div class="col-12 text-center p-3">
-                            <!-- Facebook -->
-                            <a
-                                    class="btn btn-outline-light btn-floating m-1"
-                                    role="button"
-                            ><i class="fab fa-facebook-f"></i
-                                ></a>
 
-                            <!-- Twitter -->
-                            <a
-                                    class="btn btn-outline-light btn-floating m-1"
-                                    role="button"
-                            ><i class="fab fa-twitter"></i
-                                ></a>
+                        <!-- Grid column -->
+                        <div class="col-md-4 col-lg-4 col-xl-4 ps-lg-5 ms-lg-5 ms-xl-5 mt-3">
+                            <h6 class="text-uppercase mb-4 font-weight-bold">Liens utilisateur</h6>
+                            <p><a class="text-white" href="{{ path('publication_list') }}">Liste des publications</a></p>
 
-                            <!-- Google -->
-                            <a
-                                    class="btn btn-outline-light btn-floating m-1"
-                                    role="button"
-                            ><i class="fab fa-google"></i
-                                ></a>
+                            {% if app.user%}
+                                <p><a class="text-white" href="{{ path('main_profile') }}">Mon profil</a></p>
+                                <p><a class="text-white" href="{{ path('app_logout') }}">Déconnexion</a></p>
+                            {% else %}
+                                <p><a class="text-white" href="{{ path('app_login') }}">Connexion</a></p>
+                            {% endif %}
 
-                            <!-- Instagram -->
-                            <a
-                                    class="btn btn-outline-light btn-floating m-1"
-                                    role="button"
-                            ><i class="fab fa-instagram"></i
-                                ></a>
+                            <p><a class="text-white" href="{{ path('legal_notice') }}">Mentions légales</a></p>
+
+                            <p><a class="text-white text-uppercase" href="{{ path('terms_of_service') }}">Cgu</a></p>
+
                         </div>
 
-                        <!-- Copyright -->
-                        <div class="text-center p-3">
-                            <p>2023
-                                <a class="text-white" href="{{ path('main_home') }}"> Rugby Club du Pays Graylois</a>
-                            . Tous droits réservés.</p>
+                        <!-- Grid column -->
+                        <hr class="w-75 mx-auto clearfix d-md-none" />
+
+                        <!-- Grid column -->
+                        <div class="col-md-4 col-lg-3 col-xl-3 me-lg-5 ms-xl-1 me-xl-0 mt-3">
+                            <h6 class="text-uppercase mb-4 font-weight-bold">Contact</h6>
+                            <p><i class="fas fa-home me-1"></i> Stade Marcel Perrey
+                                <br>70100 Arc-lès-Gray</p>
+                            <p><i class="fas fa-envelope me-2"></i><a href="mailto:didier.aubry474@orange.fr" class="text-white">didier.aubry474@orange.fr</a></p>
+                            <p><i class="fas fa-phone me-2"></i>03 84 32 87 42</p>
                         </div>
+
+                        <hr class="w-75 mx-auto clearfix d-md-none" />
+
+                        <div class="col-md-4 col-lg-3 col-xl-4 ms-xl-5 mt-3">
+
+                            <h6 class="text-uppercase mb-4 font-weight-bold">Liens utiles</h6>
+
+                            <p><a class="text-white" href="https://www.facebook.com/HauteSaoneRUGBY/" target="_blank">Haute-Saône Rugby (Facebook)</a></p>
+
+                            <p><a class="text-white" href="https://www.rugbybgfc.fr/" target="_blank">Ligue de rugby Bourgogne Franche-Comté</a></p>
+
+                            <p><a class="text-white" href="https://www.ffr.fr/" target="_blank">Fédération Française de rugby</a></p>
+
+                            <p><a class="text-white" href="https://ovale2.ffr.fr/" target="_blank">Oval-e</a></p>
+
+                        </div>
+
                     </div>
-            </section>
+
+                    <!-- Grid column -->
+                </section>
+
+                <section>
+                        <div class="row">
+                            <div class="col-12 text-center p-3">
+                                <!-- Facebook -->
+                                <a
+                                        class="btn btn-outline-light btn-floating m-1"
+                                        role="button"
+                                ><i class="fab fa-facebook-f"></i
+                                    ></a>
+
+                                <!-- Twitter -->
+                                <a
+                                        class="btn btn-outline-light btn-floating m-1"
+                                        role="button"
+                                ><i class="fab fa-twitter"></i
+                                    ></a>
+
+                                <!-- Google -->
+                                <a
+                                        class="btn btn-outline-light btn-floating m-1"
+                                        role="button"
+                                ><i class="fab fa-google"></i
+                                    ></a>
+
+                                <!-- Instagram -->
+                                <a
+                                        class="btn btn-outline-light btn-floating m-1"
+                                        role="button"
+                                ><i class="fab fa-instagram"></i
+                                    ></a>
+                            </div>
+
+                            <!-- Copyright -->
+                            <div class="text-center p-3">
+                                <p>2023
+                                    <a class="text-white" href="{{ path('main_home') }}"> Rugby Club du Pays Graylois</a>
+                                . Tous droits réservés.</p>
+                            </div>
+                        </div>
+                </section>
+            </div>
         </div>
     </footer>
