@@ -31,16 +31,11 @@
                         <div class="g-recaptcha" data-sitekey="{{ google_recaptcha_site_key }}"></div>
                     </div>
 
-                    {{ form_row( registrationForm.save ) }}
-
                     {# Checkbox d'acceptation des CGU avec lien vers ces dernières #}
-                    <div class="mb-5">
-                        <div class="form-check">
-                            <label for="registration_form_agreeTerms"></label>
-                            <input type="checkbox" id="registration_form_agreeTerms" name="registration_form[agreeTerms]" required="required" class="form-check-input" value="1">
-                        <label class="registration_form[agreeTerms]">Accepter les <a href="{{ path('terms_of_service') }} " class="text-dark">CGU</a></label>
-                        </div>
-                    </div>
+                    {{ form_row( registrationForm.agreeTerms ) }}
+                    <a href="{{ path('terms_of_service') }} " class="text-dark ms-5">CGU</a>
+
+                    {{ form_row( registrationForm.save ) }}
 
                 {{ form_end( registrationForm ) }}
 

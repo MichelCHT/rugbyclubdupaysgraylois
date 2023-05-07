@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Publication;
 use App\Form\EditPhotoType;
 use Doctrine\Persistence\ManagerRegistry;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
@@ -16,9 +17,15 @@ class MainController extends AbstractController
      * Contrôleur de la page d'accueil
      */
     #[Route('/', name: 'main_home')]
-    public function home(): Response
+    public function home(ManagerRegistry $doctrine): Response
     {
-        return $this->render('main/home.html.twig');
+        // Récupération et affichage des dernières publications
+        $publicationRepo = $doctrine->getRepository(Publication::class);
+
+        $publications = $publicationRepo->findBy([], ['publicationDate' => 'DESC'], $this->getParameter('app.publication.number_of_latest_publications_on_home'));
+        return $this->render('main/home.html.twig',[
+            'publications' => $publications,
+        ]);
     }
 
     /*
@@ -48,6 +55,21 @@ class MainController extends AbstractController
             $photo = $form->get('photo')->getData();
 
             $newFileName = 'user' . $this->getUser()->getId() . '.' . $photo->guessExtension();
+
+            // Si présence d'une photo utilisateur, suppression de cette dernière
+            if(
+                $this->getUser()->getPhoto() != null &&
+                file_exists( $this->getParameter('app.user.photo.directory') . $this->getUser()->getPhoto())
+            ){
+
+                // Suppression de l'ancienne photo
+                unlink( $this->getParameter('app.user.photo.directory') . $this->getUser()->getPhoto() );
+            }
+
+            // Création d'un nouveau nom de fichier pour la nouvelle photo
+            do{
+                $newFileName = md5( random_bytes(100) ) . '.' . $photo->guessExtension();
+            } while(file_exists( $this->getParameter('app.user.photo.directory') . $newFileName ));
 
             // Sauvegarde du nom de la photo envoyé par l'user
             $this->getUser()->setPhoto($newFileName);

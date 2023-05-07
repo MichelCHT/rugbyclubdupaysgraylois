@@ -5,11 +5,12 @@ namespace App\Form;
 use App\Entity\Publication;
 use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\File;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
 
@@ -53,6 +54,25 @@ class NewPublicationFormType extends AbstractType
                 ],
             ])
 
+            ->add('picture', FileType::class, [
+                'label' => 'Veuillez choisir une photo (optionnel).',
+                'attr' => [
+                    'accept' => 'image/jpeg, image/png',
+                ],
+                'required' => false,
+                'constraints' => [
+                    new File([
+                        'maxSize' => '5M',
+                        'maxSizeMessage' => 'Fichier trop volumineux.',
+                        'mimeTypes' => [
+                            'image/jpeg',
+                            'image/png',
+                        ],
+                        'mimeTypesMessage' => 'Veuillez choisir un fichier jpg ou png.',
+                    ]),
+                ],
+            ])
+
             ->add('save', SubmitType::class, [
                 'label' => 'Publier',
                 'attr' => [
@@ -65,7 +85,7 @@ class NewPublicationFormType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => Publication::class,
+            'data_class' => Publication::class, null,
         ]);
     }
 }

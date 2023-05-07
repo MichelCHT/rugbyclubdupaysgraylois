@@ -74,3 +74,8 @@ Footer section{
 .form-check-input{
     border-color: black;
 }
+
+/* Masquage d'un bug avec CKEditor */
+#cke_1_bottom{
+    display: none;
+}

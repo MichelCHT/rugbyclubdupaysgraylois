@@ -14,19 +14,15 @@
             <h1 class="col-12 text-center text-uppercase my-5">Modifier la photo de profil</h1>
         </div>
 
-        {# Lien de retour à la page du profil #}
-        <div class="row">
-            <div class="col-12 text-center mb-3">
-                <a href="{{ path('main_profile') }}" class="text-decoration-none text-white">Revenir à mon profil</a>
-            </div>
-        </div>
-
         {# Affichage du formulaire d'ajout d'une photo #}
         <div class="row">
-            <div class="col-12 col-md-8 col-lg-7 col-xl-6 col-xxl-5 mx-auto">
+            <div class="col-11 col-md-10 mx-auto">
                 <div class="row">
-                    <div class="col-12  mx-auto"> {{ form(form) }}
+                    <div class="col-12 my-3 mx-auto"> {{ form(form) }}
                     </div>
+
+                    {# Lien de retour à la page du profil #}
+                    <div><a href="{{ path('main_profile') }}" class="text-secondary">Revenir à mon profil</a></div>
                 </div>
             </div>
         </div>

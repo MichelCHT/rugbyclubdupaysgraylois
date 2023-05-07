@@ -4,6 +4,7 @@ namespace App\DataFixtures;
 
 use App\Entity\Publication;
 use App\Entity\User;
+use App\Entity\Comment;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
@@ -33,7 +34,7 @@ class AppFixtures extends Fixture
             ->setPseudonym('Adam')
             ->setRoles(["ROLE_ADMIN"])
             ->setPassword(
-                $this->encoder->hashPassword($admin, 'aaaaaaaaa/A1')
+                $this->encoder->hashPassword($admin, 'aaaaaaaaaA/1')
             )
         ;
 
@@ -50,7 +51,7 @@ class AppFixtures extends Fixture
                 ->setRegistrationDate( $faker->dateTimeBetween('-1 year', 'now') )
                 ->setPseudonym( $faker->userName )
                 ->setPassword(
-                    $this->encoder->hashPassword($user, 'aaaaaaaaa/A1')
+                    $this->encoder->hashPassword($user, 'aaaaaaaaaA/1')
                 )
             ;
 
@@ -71,8 +72,34 @@ class AppFixtures extends Fixture
 
             $manager->persist($publication);
 
+            // Création entre 0 et 10 commentaires aléatoires par publication
+            $rand = rand(0, 10);
+
+            for($j = 0; $j < $rand; $j++){
+
+                // Création d'un nouveau commentaire
+                $newComment = new Comment();
+
+                // Hydratation du commentaire
+                $newComment
+                    ->setPublication($publication)
+
+                    // Date aléatoire
+                    ->setPublicationDate($faker->dateTimeBetween( '-1 year' , 'now'))
+
+                    // Auteur aléatoire parmis les comptes créés plus haut
+                    ->setAuthor($faker->randomElement($user))
+                    ->setContent($faker->paragraph(5))
+                ;
+
+                // Persistance du commentaire
+                $manager->persist($newComment);
+
+            }
+
         }
 
         $manager->flush();
     }
+
 }

@@ -7,8 +7,23 @@ liip_imagine:
 
     filter_sets:
 
+        # Filtre pour affichage des photos de profil dans la rubrique "Mon compte"
         profil:
             quality: 75
             filters:
                 scale:
-                    dim: [700, 700]
+                    dim: [ 700, 700 ]
+
+        # Filtre pour l'affichage des photos de profil dans la rubrique des commentaires
+        comment:
+            quality: 75
+            filters:
+                scale:
+                    dim: [ 100, 100 ]
+
+        # Filtre pour l'affichage des images des publications
+        picture:
+            quality: 75
+            filters:
+                scale:
+                    dim: [ 1500, 1500 ]

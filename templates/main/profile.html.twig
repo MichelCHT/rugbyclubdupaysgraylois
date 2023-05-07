@@ -11,54 +11,53 @@
     <div class="container-fluid">
 
         <div class="row">
-            <h1 class="col-12 text-center text-uppercase my-5 pb-lg-5">Mon profil</h1>
+            <h1 class="col-12 text-center my-5">Mon du profil</h1>
         </div>
 
         <div class="row">
-           <div class="col-12 col-md-10 mb-5 mx-auto">
+            <div class="card mb-5 col-11 col-md-10 mx-auto">
 
-               <div class="row">
+                <div class="row">
 
-                    <div class="col-12 col-md-3 bg-black px-2 py-3 text-center">
+                    {# Bloc de gauche #}
+                    <div class="col-8 col-sm-7 col-md-4 px-2 py-3 mx-auto">
+                        {% if app.user.photo is null %}
+
+                            {# Affichage de la photo de profil par défault #}
+                            <img src="{{ asset('images/default_profile_picture.jpg') }}" alt="Photo de profil par défaut" class="img-fluid img-thumbnail">
+                        {% else %}
+
+                            {# Affichage de la photo personalisée si modification effectuée par l'utilisateur #}
+                            <img src="{{ asset('images/profils/' ~ app.user.photo )|imagine_filter('profil') }}" alt="" class="img-fluid img-thumbnail">
+                        {% endif %}
 
                         <div class="row">
-                            <div class="col-10 mx-auto d-flex justify-content-center align-items-center">
-
-                                {% if app.user.photo is null %}
-                                     {# Affichage de la photo de profil par défault #}
-                                    <img src="{{ asset('images/default_profile_picture.jpg') }}" alt="Photo de profil par défaut" class="img-fluid img-thumbnail">
-                                {% else %}
-                                    <img src="{{ asset('images/profils/' ~ app.user.photo )|imagine_filter('profil') }}" alt="" class="img-fluid img-thumbnail">
-                                {% endif %}
-
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-12">
-                                <a href="{{ path('main_edit_photo') }}">Modifier la photo de profil</a>
+                            <div class="col-12 text-center">
+                                <a href="{{ path('main_edit_photo') }}" class="text-secondary text-decoration-none">Modifier la photo de profil</a>
                             </div>
                         </div>
                     </div>
 
-                   {# Affichage des informations du profil #}
-                   <div class="col-12 col-md-9 px-2 py-3 bg-dark d-flex justify-content-center align-items-center">
+                    {# Bloc de droite #}
+                    <div class="col-12 col-md-8 px-2 py-3 d-flex justify-content-center align-items-center">
 
-                       <ul class="list-group col-12 col-md-8 p-0">
-                           <li class="list-group-item bg-black text-white">Pseudonyme : <span class="text-info">{{ app.user.pseudonym }}</span></li>
-                           <li class="list-group-item bg-black text-white">Adresse mail : <span class="text-info">{{ app.user.email }}</span></li>
-                           <li class="list-group-item bg-black text-white">Date d'inscription : <span class="text-info">{{ app.user.registrationDate|format_datetime(locale='fr', pattern="'le' EEEE dd MMMM YYYY à HH'h'mm") }}</span></li>
-                           <li class="list-group-item bg-black text-white">Compte : <span class="text-info">{{ is_granted('ROLE_ADMIN') ? 'Administrateur' : 'Utilisateur' }}</span></li>
-                       </ul>
+                        {# Infos du compte #}
+                        <ul class="list-group col-10 border">
+                            <li class="list-group-item border text-secondary">Adresse Email : <span class="text-dark">{{ app.user.email }}</span></li>
+                            <li class="list-group-item border text-secondary">Pseudonyme : <span class="text-dark">{{ app.user.pseudonym }}</span></li>
+                            <li class="list-group-item border text-secondary">Date d'inscription : <span class="text-dark">{{ app.user.registrationDate|format_datetime(locale='fr', pattern="EEEE dd MMMM YYYY à HH'h'mm") }}</span></li>
+                            <li class="list-group-item border text-secondary">
+                                Compte :
+                                <span class="text-dark">{{ is_granted('ROLE_ADMIN') ? 'Administrateur' : 'Utilisateur' }}</span>
+                            </li>
+                        </ul>
+                    </div>
 
+                </div>
 
-
-                   </div>
-               </div>
-
-           </div>
+            </div>
         </div>
 
     </div>
-
 
 {% endblock %}

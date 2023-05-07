@@ -10,25 +10,28 @@
 {#  Conteneur de la page #}
 {% block body %}
 
-    {#   Grille Bootstrap #}
+    {# Grille Bootstrap #}
     <div class="container-fluid">
 
-        {#        Affichage de l'image d'erreur 403 #}
-        <div class="row  my-3 text-uppercase">
+        {# Affichage de l'image d'erreur 403 #}
+        <div class="row  my-3">
 
             <div>
-                <a class="h2" href="{{ path('main_home') }}">Retour à l'accueil</a>
+                <p class="h1 text-center my-5 text-uppercase">Erreur 403, accès interdit</p>
             </div>
 
             <div class="col-12 text-center">
                 <img src="{{ asset('images/error_403.jpg') }}" alt="Erreur 403, page introuvable" class=" img-fluid col-6">
             </div>
 
+
+            <a class="text-decoration-none text-dark text-center my-4" href="{{ path('main_home') }}"><i class="fa-solid fa-arrow-rotate-left me-1"></i>Retour à l'accueil</a>
             <div>
-                <p class="h1 text-center p-3">Erreur 403, accès interdit.</p>
+
             </div>
 
         </div>
 
     </div>
+
 {% endblock %}

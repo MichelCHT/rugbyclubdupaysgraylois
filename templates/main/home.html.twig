@@ -8,18 +8,70 @@
 {% block body %}
 
     {# Grille Bootstrap #}
-    <div class="container-fluid">
+<div class="container-fluid">
 
-        <div class="row">
-            <h1 class="col-12 text-center text-uppercase my-5  pb-lg-5">Accueil</h1>
-        </div>
+    <div class="row">
+        <h1 class="col-12 text-center text-uppercase mt-5 my-3">Accueil</h1>
+    </div>
 
-        <div class="row">
+    <div class="row">
+        <hr class="col-8 col-md-6 col-lg-4 my-3 mx-auto">
+    </div>
 
+    {# Affichage des derniers articles publiés #}
+    <div class="row">
+        <h3 class="col-12 mt-2 text-center text-uppercase">Dernières publications</h3>
+    </div>
 
+    <div class="row  justify-content-center">
 
-        </div>
+        {# Boucle pour afficher les derniers articles #}
+        {% for publication in publications %}
+
+            <div class="card bg-white col-11 col-md-5 col-xl-3 m-3">
+                <div class="card-header">
+                    <div class="p-3">
+
+                        {# Titre de la publication #}
+                        <a class="text-uppercase text-decoration-none text-dark" href="{{ path('publication_view', {'slug':publication.slug}) }}">{{ publication.title }}</a>
+
+                        {# Affichage de l'image de la publication ou celle par défaut si elle n'en a pas #}
+                        {% if publication.picture is null %}
+                            <img src="{{ asset('images/default_publication_picture.jpg')|imagine_filter('picture') }}" alt="" class="img-fluid img-thumbnail">
+                        {% else %}
+                            <img src="{{ asset('images/pictures/' ~ publication.picture)|imagine_filter('picture') }}" alt="" class="img-fluid img-thumbnail">
+                        {% endif %}
+
+                    </div>
+                </div>
+
+                <div class="card-body">
+                    <div class="mb-2">
+
+                        {# Extrait du contenu de la publication #}
+                        {{ publication.content|striptags|excerpt(25)}}
+                        <a class=" text-decoration-none " href="{{ path('publication_view', {'slug':publication.slug}) }}">Lire la suite</a>
+                    </div>
+                </div>
+
+                {# Date et auteur de la publication #}
+                <div class="card-footer">
+                    <div class="blockquote-footer my-2">Publié le <strong>{{ publication. publicationDate|format_datetime(locale='fr', pattern="EEEE dd MMMM YYYY à HH'h'mm") }}</strong> par <strong>{{ publication.author.pseudonym }}</strong>
+                    </div>
+                </div>
+
+            </div>
+
+        {% else %}
+
+            <div class="row">
+                <p class="col-12 col-md-8 col-lg-7 col-xl-6 col-xxl-5 alert alert-warning text-center mx-auto">Il n'y a aucune publication</p>
+            </div>
+
+        {% endfor %}
 
     </div>
+
+</div>
 
 {% endblock %}

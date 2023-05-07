@@ -4,8 +4,18 @@
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices.html#use-parameters-for-application-configuration
 parameters:
+
+    # Nombre de publications sur la page d'accueil
+    app.publication.number_of_latest_publications_on_home: 6
+
+    # Récupération de la clé privée Google recaptcha
     google_recaptcha.private_key: '%env(GOOGLE_RECAPTCHA_PRIVATE_KEY)%'
+
+    # Destination des photos de profil personnalisées
     app.user.photo.directory: '%kernel.project_dir%/public/images/profils/'
+
+    # Destination des images des publications
+    app.publication.picture.directory: '%kernel.project_dir%/public/images/pictures/'
 
 services:
     # default configuration for services in *this* file

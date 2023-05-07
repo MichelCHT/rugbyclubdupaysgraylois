@@ -95,6 +95,19 @@ class RegistrationFormType extends AbstractType
                 ],
             ])
 
+            ->add('agreeTerms', CheckboxType::class, [
+                'label' => 'Accepter les ',
+                'mapped' => false,
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'Veuillez accepter les conditions générales d\'utilisation.',
+                    ]),
+                    new IsTrue([
+                        'message' => 'Pour vous inscrire, vous devez accepter les conditions générales d\'utilisation.',
+                    ]),
+                ],
+            ])
+
             // Bouton de validation
             ->add('save', SubmitType::class,[
                 'label' => 'Créer un compte',

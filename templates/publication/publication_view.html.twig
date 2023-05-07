@@ -11,40 +11,113 @@
     <div class="container-fluid">
 
         <div class="row">
-            <h2 class="col-12 text-center text-uppercase my-5 pb-lg-5">{{ publication.title }}</h2>
-        </div>
+            <div class="card col-11 col-md-10 my-3 mx-auto">
+                <div class="card-header">
+                    <h2 class=" card-title col-12 text-uppercase my-5 pb-lg-3">{{ publication.title }}</h2>
 
-        <div class="row">
+                    {# Affichage de l'image de la publication ou celle par défaut si elle n'en a pas #}
+                    {% if publication.picture is null %}
+                        <img src="{{ asset('images/default_publication_picture.jpg')|imagine_filter('picture') }}" alt="" class="img-fluid img-thumbnail">
+                    {% else %}
+                        <img src="{{ asset('images/pictures/' ~ publication.picture)|imagine_filter('picture') }}" alt="" class="img-fluid img-thumbnail">
+                    {% endif %}
 
-            <div class="col-8 mx-auto">
+                </div>
 
-                <div class="card">
+                {# Contenu de la publication #}
+                <div class="card-body">
+                    <p class="card-text">{{ publication.content|purify }}</p>
+                </div>
 
-                    <div class="card-body">
+                {# Date et auteur de la publication #}
+                <div class="card-footer">
+                    <div class="blockquote-footer my-2">Publié le <strong>{{ publication. publicationDate|format_datetime(locale='fr', pattern="EEEE dd MMMM YYYY à HH'h'mm") }}</strong> par <strong>{{ publication.author.pseudonym }}</strong></div>
 
-                        {# Contenu de la publication #}
-                        <div class="mb-2">
-                            {{ publication.content|purify }}
+                    {# Si l'utilisateur a le rôle admin, on affiche un menu avec un bouton permettant de supprimer/modifier l'article #}
+                    {% if is_granted('ROLE_ADMIN') %}
+
+                        <div class="mt-3">
+
+                            <a href="{{ path('publication_edit', {'id': publication.id}) }}" class="text-secondary me-3">Modifier</a>
+
+                            <a onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette publication ?')" class="text-secondary" href="{{ path('publication_delete', {'id': publication.id, csrf_token: csrf_token('publication_delete_' ~ publication.id ) }) }}">Supprimer</a>
                         </div>
 
-                        {# Date et auteur de la publication #}
+                    {% endif %}
+
+                </div>
+            </div>
+
+            {# Espace commentaire #}
+            <div class="card col-11 col-md-10 my-3 mx-auto">
+
+                {# Nombre de commentaire dans le titre H2 #}
+                <h3 class="text-center my-4">Commentaires ({{ publication.comments|length }})</h3>
+
+                {# Affichage de tous les commentaires en les parcourant avec une boucle #}
+                {% for comment in publication.comments %}
+
+                    <div class="card my-2">
                         <div class="card-body">
-                            <footer class="blockquote-footer my-2">Publié le <strong>{{ publication. publicationDate|format_datetime(locale='fr', pattern="EEEE dd MMMM YYYY à HH'h'mm") }}</strong> par <strong>{{ publication.author.pseudonym }}</strong></footer>
+
+                            {# Affichage de la photo de profil de l'auteur, ou de la photo par défaut s'il n'en pas #}
+                            {% if comment.author.photo is null %}
+                                <img class="img-thumbnail float-start me-3" src="{{ asset('images/default_profile_picture.jpg')|imagine_filter('comment') }}" alt="">
+                            {% else %}
+
+                                <img class="img-thumbnail float-start me-3" src="{{ asset('images/profils/' ~ comment.author.photo )|imagine_filter('comment') }}" alt="">
+
+                            {% endif %}
+
+                            <p class="card-text">{{ comment.content }}</p>
+                        </div>
+
+                        <div class="card-footer">
+
+                            {# Date et auteur du commentaire #}
+                            <div class="col-12">
+                                <footer class="blockquote-footer my-2">Ajouté par <strong class="mr-1">{{ comment.author.pseudonym }}</strong>, le <strong class="">{{ comment.publicationDate|date('d/m/Y à H\\hi') }}</strong></footer>
+                            </div>
+
+                            {# Si le'utilisateur est admin ou auteur du commentaire, affichage d'un bouton de suppression #}
+                            {% if is_granted('ROLE_ADMIN') or comment.getAuthor() == app.user %}
+                                <div class="admin-button-article">
+                                    <a onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce commentaire ?')" class="text-secondary" href="{{ path('comment_delete', {'id': comment.id, 'csrf_token' : csrf_token('comment_delete' ~ comment.id ) }) }}">Supprimer</a>
+                                </div>
+                            {% endif %}
+
                         </div>
 
                     </div>
 
+                {% else %}
+                    <p class="text-center alert alert-warning">Aucun commentaire n'a été publié pour le moment.</p>
+                {% endfor %}
+
+                {# Si l'utilisateur est connecté, affichage du formulaire de création d'un nouveau commentaire #}
+                {% if app.user %}
+
+                    <h4 class="text-center my-2">Écrire un commentaire</h4>
+                    {{ form( form ) }}
+
+                {% else %}
+
+                    <p class="text-center text-secondary mt-4">
+                        Vous devez <a href="{{ path('app_login') }} " class="text-secondary fw-bold">vous connecter</a> pour laisser un commentaire.
+                    </p>
+
+                {% endif %}
+
             </div>
 
         </div>
 
-            <div class="row">
-                <div class="text-center col-12">
-                    <a class="text-decoration-none text-dark" href="{{ path('publication_list') }}">Retour vers la liste des publications</a>
-                </div>
+        <div class="row">
+            <div class="text-center col-12">
+                <a class="text-decoration-none text-dark" href="{{ path('publication_list') }}"><i class="fa-solid fa-arrow-rotate-left me-1"></i>Retour vers la liste des publications</a>
             </div>
-
-
         </div>
+
+    </div>
 
 {% endblock %}
