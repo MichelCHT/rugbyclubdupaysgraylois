@@ -224,7 +224,7 @@ class PublicationController extends AbstractController
     public function publicationEdit(Publication $publication, Request $request, ManagerRegistry $doctrine): Response
     {
 
-        // Création du formulaire de modification de publication (c'est le même que le formulaire permettant de créer une nouvelle publication, sauf qu'il sera déjà rempli avec les données de la publication existante "$publication")
+        // Création du formulaire de modification de publication déjà rempli avec les données de la publication existante "$publication"
         $form = $this->createForm(NewPublicationFormType::class, $publication);
 
         // Liaison des données de requête (POST) avec le formulaire
@@ -232,6 +232,46 @@ class PublicationController extends AbstractController
 
         // Si le formulaire est envoyé et n'a pas d'erreur
         if($form->isSubmitted() && $form->isValid()){
+
+            // Récupération du champ picture dans le formulaire
+            $picture = $form->get('picture')->getData();
+
+            // Si la publication a déjà une image et si cette image existe, on la supprime
+            if($publication->getPicture() != null && file_exists( $this->getParameter('app.publication.picture.directory') . $publication->getPicture() )){
+
+                // Suppression de l'ancienne image
+                unlink( $this->getParameter('app.publication.picture.directory') . $publication->getPicture() );
+            }
+
+            // Création d'un nouveau nom de fichier pour la nouvelle image
+            $newFileName = null;
+            if ($picture !== null) {
+                // guessExtension() permet de récupérer la vraie extension du fichier, déterminée par rapport à son vrai type MIME
+                $newFileName = md5(random_bytes(100)) . '.' . $picture->guessExtension();
+
+                // On change le nom de l'image
+                $publication->setPicture($newFileName);
+
+                // Mise à jour du nom de la photo dans la bdd
+                $em = $doctrine->getManager();
+                $em->flush();
+
+                // Déplacement physique de l'image dans le dossier paramétré dans le paramètre "app.publication.picture.directory" dans le fichier config/services.yaml
+                $picture->move(
+                    $this->getParameter('app.publication.picture.directory'),
+                    $newFileName
+                );
+            } else if ($publication->getPicture() !== null) {
+                // Si le champ picture est vide, mais qu'il y a un nom de fichier enregistré en base de données, on le supprime
+                $publication->setPicture(null);
+
+                // Mise à jour de la bdd
+                $em = $doctrine->getManager();
+                $em->flush();
+
+                // Suppression de l'ancienne image
+                unlink($this->getParameter('app.publication.picture.directory') . $publication->getPicture());
+            }
 
             // Sauvegarde des changements faits dans la publication via le manager général des entités
             $em = $doctrine->getManager();

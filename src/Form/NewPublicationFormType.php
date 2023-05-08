@@ -27,7 +27,7 @@ class NewPublicationFormType extends AbstractType
                         'message' => 'Veuillez saisir un titre.',
                     ]),
                     new Length([
-                        'min' => 2,
+                        'min' => 1,
                         'max' => 150,
                         'minMessage' => 'Le titre doit avoir au moins {{ limit }} caractères.',
                         'maxMessage' => 'Le titre ne peut avoir au maximum que {{ limit }} caractères.',
@@ -40,13 +40,16 @@ class NewPublicationFormType extends AbstractType
                 'attr' => [
                     'class' => 'd-none',
                 ],
+
+                // Option pour ajouter d'office un espace afin d'éviter une erreur en mode modification de publication
+                'empty_data' => '',
                 'purify_html' => true,
                 'constraints' => [
                     new NotBlank([
                         'message' => 'Veuillez saisir un contenu.',
                     ]),
                     new Length([
-                        'min' => 2,
+                        'min' => 1,
                         'max' => 50000,
                         'minMessage' => 'Le contenu doit avoir au moins {{ limit }} caractères.',
                         'maxMessage' => 'Le contenu ne peut avoir au maximum que {{ limit }} caractères.',
@@ -60,6 +63,9 @@ class NewPublicationFormType extends AbstractType
                     'accept' => 'image/jpeg, image/png',
                 ],
                 'required' => false,
+
+                // On accepte que ce champ ne soit pas forcément un objet "File" pour potentiellement pouvoir être "null" en bdd, permet ainsi l'affichage d'une image par défaut en cas de champs "null".
+                'data_class' => null,
                 'constraints' => [
                     new File([
                         'maxSize' => '5M',
