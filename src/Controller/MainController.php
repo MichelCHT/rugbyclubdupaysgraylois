@@ -23,6 +23,7 @@ class MainController extends AbstractController
         $publicationRepo = $doctrine->getRepository(Publication::class);
 
         $publications = $publicationRepo->findBy([], ['publicationDate' => 'DESC'], $this->getParameter('app.publication.number_of_latest_publications_on_home'));
+
         return $this->render('main/home.html.twig',[
             'publications' => $publications,
         ]);

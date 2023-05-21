@@ -17,16 +17,16 @@
 
                     {# Affichage de l'image de la publication ou celle par défaut si elle n'en a pas #}
                     {% if publication.picture is null %}
-                        <img src="{{ asset('images/default_publication_picture.jpg')|imagine_filter('picture') }}" alt="" class="img-fluid img-thumbnail">
+                        <img src="{{ asset('images/default_publication_picture.jpg')|imagine_filter('picture') }}" alt="Information !" class="img-fluid img-thumbnail">
                     {% else %}
-                        <img src="{{ asset('images/pictures/' ~ publication.picture)|imagine_filter('picture') }}" alt="" class="img-fluid img-thumbnail">
+                        <img src="{{ asset('images/pictures/' ~ publication.picture)|imagine_filter('picture') }}" alt="{{ publication.title }}" class="img-fluid img-thumbnail">
                     {% endif %}
 
                 </div>
 
-                {# Contenu de la publication #}
+                {# Contenu de la publication purifié de tout code HTML visible #}
                 <div class="card-body">
-                    <p class="card-text">{{ publication.content|purify }}</p>
+                    {{ publication.content|purify }}
                 </div>
 
                 {# Date et auteur de la publication #}
@@ -79,7 +79,7 @@
                                 <footer class="blockquote-footer my-2">Ajouté par <strong class="mr-1">{{ comment.author.pseudonym }}</strong>, le <strong class="">{{ comment.publicationDate|date('d/m/Y à H\\hi') }}</strong></footer>
                             </div>
 
-                            {# Si le'utilisateur est admin ou auteur du commentaire, affichage d'un bouton de suppression #}
+                            {# Si l'utilisateur est admin ou auteur du commentaire, affichage d'un bouton de suppression #}
                             {% if is_granted('ROLE_ADMIN') or comment.getAuthor() == app.user %}
                                 <div class="admin-button-article">
                                     <a onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce commentaire ?')" class="text-secondary" href="{{ path('comment_delete', {'id': comment.id, 'csrf_token' : csrf_token('comment_delete' ~ comment.id ) }) }}">Supprimer</a>

@@ -37,9 +37,9 @@
 
                         {# Affichage de l'image de la publication ou celle par défaut si elle n'en a pas #}
                         {% if publication.picture is null %}
-                            <img src="{{ asset('images/default_publication_picture.jpg')|imagine_filter('picture') }}" alt="" class="img-fluid img-thumbnail">
+                            <img src="{{ asset('images/default_publication_picture.jpg')|imagine_filter('picture') }}" alt="Information !" class="img-fluid img-thumbnail">
                         {% else %}
-                            <img src="{{ asset('images/pictures/' ~ publication.picture)|imagine_filter('picture') }}" alt="" class="img-fluid img-thumbnail">
+                            <img src="{{ asset('images/pictures/' ~ publication.picture)|imagine_filter('picture') }}" alt="{{ publication.title }}" class="img-fluid img-thumbnail">
                         {% endif %}
 
                     </div>
@@ -48,7 +48,7 @@
                 <div class="card-body">
                     <div class="mb-2">
 
-                        {# Extrait du contenu de la publication #}
+                        {# Extrait du contenu de la publication sans mise en page et avec un tronquage à 25 mots via un filtre perso #}
                         {{ publication.content|striptags|excerpt(25)}}
                         <a class=" text-decoration-none " href="{{ path('publication_view', {'slug':publication.slug}) }}">Lire la suite</a>
                     </div>

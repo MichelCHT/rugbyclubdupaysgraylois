@@ -1,15 +1,18 @@
 
+/* Polices et couleur de font du site en général */
 body{
     font-family: 'Cabin', arial, sans-serif;
     background-color: white;
 }
 
+/* Taille et positionnement du logo */
 .navbar-brand .main-navbar-logo{
     width: 300px;
     margin-left: 50px;
     margin-right: 100px;
 }
 
+/* Taille, alignement et comportement de la transparence de l'image en bandeau */
 .navbar{
     background-image: linear-gradient(to right, white, transparent 1000px), url("/../images/banner_picture.jpg");
     background-size: cover;

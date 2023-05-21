@@ -20,15 +20,15 @@
 
                 {# Liste déroulante liée aux publications #}
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle cursor-pointer" id="navbarDropdown" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-marker"></i> Publications</a>
+                    <a class="nav-link dropdown-toggle cursor-pointer" role="navigation" aria-expanded="false"><i class="fa-solid fa-marker"></i> Publications</a>
 
                     {# Boutons du menu déroulant #}
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{{ path('publication_list') }}">Toutes les publications</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="{{ path('publication_list') }}">Toutes les publications</a></li>
 
                     {# Affichage du lien réservé au(x) compte(s) admin #}
                     {% if is_granted('ROLE_ADMIN') %}
-                        <a class="dropdown-item" href="{{ path('new_publication') }}">Créer une publication</a>
+                        <li><a class="dropdown-item" href="{{ path('new_publication') }}">Créer une publication</a></li>
                     {% endif %}
 
                     </ul>
@@ -39,16 +39,16 @@
 
                     {# Liste déroulante liée aux comptes #}
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle cursor-pointer" id="navbarDropdown" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-user mx-1"></i>Mon compte</a>
+                        <a class="nav-link dropdown-toggle cursor-pointer" role="navigation" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-user mx-1"></i>Mon compte</a>
 
                         {# Boutons du menu déroulant #}
-                        <ul class="dropdown-menu" aria-labelledby="profil-dropdown">
+                        <ul class="dropdown-menu">
 
                             {# Affichage du pseudonyme de l'utilisateur connecté #}
-                            <p class="dropdown-item my-auto" >{{ app.user.pseudonym }}</p>
-                            <hr class="dropdown-divider">
-                            <a class="dropdown-item" href="{{ path('main_profile') }}">Mon profil</a>
-                            <a class="dropdown-item" href="{{ path('app_logout') }}">Déconnexion</a>
+                            <li class="dropdown-item my-auto" >{{ app.user.pseudonym }}</li>
+                            <li class="dropdown-divider">
+                            <li><a class="dropdown-item" href="{{ path('main_profile') }}">Mon profil</a></li>
+                            <li><a class="dropdown-item" href="{{ path('app_logout') }}">Déconnexion</a></li>
                         </ul>
 
                 {# Affichage si utilisateur non connecté #}
