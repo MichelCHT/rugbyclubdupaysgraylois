@@ -11,6 +11,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
     {# Affichage du titre de page suivi du nom du site #}
     <title>{% block title %}{% endblock %} - {{ site_name }}</title>
 
@@ -42,7 +43,8 @@
     {% block body %}{% endblock %}
 
     {# Block pour le footer #}
-    {% include 'partials/_footer.html.twig' %}
+
+    {% block footer %}{% include 'partials/_footer.html.twig' %}{% endblock %}
 
     {# inclusion js Bootstrap #}
     <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
