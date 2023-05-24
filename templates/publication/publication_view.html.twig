@@ -26,7 +26,7 @@
 
                 {# Contenu de la publication purifié de tout code HTML visible #}
                 <div class="card-body">
-                    {{ publication.content|purify }}
+                    {{ publication.content|purify|striptags }}
                 </div>
 
                 {# Date et auteur de la publication #}
