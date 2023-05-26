@@ -36,6 +36,17 @@
     {# Inclusion dans un block du menu principal afin de pouvoir changer la configuration de ce dernier #}
     {% block navbar %}{% include 'partials/_main_navbar.html.twig' %}{% endblock %}
 
+    {# Condition d'affichage des messages relatifes à la vérification du compte #}
+    {% if app.user and app.user.isVerified == false %}
+        <div class="alert alert-warning alert-dismissible col-12 col-md-10 mt-5 alert text-center mx-auto" role="alert">
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
+                <div class="alert-message">
+                    <strong>Votre compte n'est pas activé.</strong>
+                    <a href="{{ path('resend_verif') }}" class="text-dark">Renvoyer un lien d'activation.</a>
+                </div>
+        </div>
+    {% endif %}
+
     {# Inclusion des messages flash #}
     {% include 'partials/_flashes.html.twig' %}
 
@@ -43,7 +54,6 @@
     {% block body %}{% endblock %}
 
     {# Block pour le footer #}
-
     {% block footer %}{% include 'partials/_footer.html.twig' %}{% endblock %}
 
     {# inclusion js Bootstrap #}

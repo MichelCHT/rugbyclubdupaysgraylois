@@ -1,0 +1,7 @@
+<h1>Activation de votre compte</h1>
+
+<h2>Bonjour {{ user.pseudonym }}</h2>
+
+<p>Votre inscription sur le site du Rugby Club du Pays Graylois est à valider en cliquant sur le lien suivant :</p>
+<p><a href="{{ absolute_url(path('verify_user', {token: token})) }}">Valider</a></p>
+<p>Ce lien expirera dans 1 heure.</p>

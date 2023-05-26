@@ -12,7 +12,7 @@
         "doctrine/doctrine-migrations-bundle": "^3.2",
         "doctrine/orm": "^2.14",
         "exercise/htmlpurifier-bundle": "^4.1",
-        "fakerphp/faker": "^1.21",
+        "fakerphp/faker": "^1.22",
         "friendsofsymfony/ckeditor-bundle": "^2.4",
         "knplabs/knp-paginator-bundle": "^6.2",
         "liip/imagine-bundle": "^2.10",

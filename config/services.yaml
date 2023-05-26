@@ -17,6 +17,9 @@ parameters:
     # Destination des images des publications
     app.publication.picture.directory: '%kernel.project_dir%/public/images/pictures/'
 
+    # Récupération de la clé secrete de génération et d'utilisation de tokens
+    app.jwtsecret: '%env(JWT_SECRET)%'
+
 services:
     # default configuration for services in *this* file
     _defaults:

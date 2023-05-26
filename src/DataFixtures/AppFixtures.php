@@ -58,6 +58,10 @@ class AppFixtures extends Fixture
         $manager->persist($user);
         }
 
+        // Stockage du compte de côté pour créer des commentaires plus bas
+        $users[] = $user;
+
+
         // Fixture de création de 100 publications
         for($i = 0; $i < 100; $i++){
 
@@ -71,6 +75,7 @@ class AppFixtures extends Fixture
             ;
 
             $manager->persist($publication);
+
 
             // Création entre 0 et 10 commentaires aléatoires par publication
             $rand = rand(0, 10);
@@ -88,7 +93,7 @@ class AppFixtures extends Fixture
                     ->setPublicationDate($faker->dateTimeBetween( '-1 year' , 'now'))
 
                     // Auteur aléatoire parmis les comptes créés plus haut
-                    ->setAuthor($faker->randomElement($user))
+                    ->setAuthor($faker->randomElement($users))
                     ->setContent($faker->paragraph(5))
                 ;
 
