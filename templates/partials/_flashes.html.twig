@@ -1,4 +1,4 @@
-{# Affichage des messages flash "success" ou "error" #}
+{# Affichage des messages flash "success", "error" ou "warning" #}
 {% if app.session.flashBag.has('success') or app.session.flashBag.has('error') or app.session.flashBag.has('warning') %}
 
     <div class="container-fluid">

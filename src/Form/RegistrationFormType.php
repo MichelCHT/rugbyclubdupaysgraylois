@@ -32,7 +32,7 @@ class RegistrationFormType extends AbstractType
                 ],
                 'constraints' => [
                     New NotBlank([
-                        'message' => 'Merci de renseigner une adresse mail.',
+                        'message' => 'Veuillez saisir votre adresse mail.',
                     ]),
                     New Email([
                         'message' => 'L\'adresse email {{ value }} n\'est pas valide.',

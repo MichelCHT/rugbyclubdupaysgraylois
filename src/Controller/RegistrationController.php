@@ -192,5 +192,5 @@ class RegistrationController extends AbstractController
         // Redirection vers la page de profil
         return $this->redirectToRoute('main_profile');
     }
-    
+
 }
