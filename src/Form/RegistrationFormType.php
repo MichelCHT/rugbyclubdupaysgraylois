@@ -96,8 +96,8 @@ class RegistrationFormType extends AbstractType
             ])
 
             ->add('agreeTerms', CheckboxType::class, [
-                'label' => 'Accepter les ',
-                'mapped' => false,
+                'label' => 'Accepter les',
+                    'mapped' => false,
                 'constraints' => [
                     new NotBlank([
                         'message' => 'Veuillez accepter les conditions générales d\'utilisation.',
@@ -112,7 +112,7 @@ class RegistrationFormType extends AbstractType
             ->add('save', SubmitType::class,[
                 'label' => 'Créer un compte',
                 'attr' => [
-                    'class' => 'btn btn-outline-secondary w-100 my-4',
+                    'class' => 'btn btn-outline-secondary w-100 mt-1 mb-4',
                 ],
             ])
         ;

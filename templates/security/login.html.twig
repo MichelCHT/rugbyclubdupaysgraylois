@@ -10,19 +10,18 @@
     {# Grille Bootstrap #}
     <div class="container-fluid">
 
+        {# Message si erreur dans le formulaire #}
+        {% if error %}
+            <div class="alert alert-danger col-11 col-md-10 mt-5 text-center mx-auto">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+        {% endif %}
+
         <div class="row">
             <h1 class="col-12 text-center text-uppercase my-5 pb-lg-5">Connexion</h1>
         </div>
 
-
         <div class="row">
 
             <form method="POST">
-
-                {# Message si erreur dans le formulaire #}
-                {% if error %}
-                    <div class="alert alert-danger col-11 col-md-10 mt-5 text-center mx-auto">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-                {% endif %}
 
                 {# Champ email #}
                 <div class="col-12 col-md-8 col-lg-7 col-xl-6 col-xxl-5 mx-auto">

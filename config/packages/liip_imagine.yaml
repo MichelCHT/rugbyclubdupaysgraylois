@@ -27,3 +27,10 @@ liip_imagine:
             filters:
                 scale:
                     dim: [ 1500, 1500 ]
+
+        # Filtre pour l'affichage des vignettes des publications
+        thumbnail:
+            quality: 75
+            filters:
+                scale:
+                    dim: [ 500, 500 ]

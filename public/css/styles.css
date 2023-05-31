@@ -69,6 +69,10 @@ Footer section{
     background-color: black;
 }
 
+.link-container {
+    margin-left: 10px;
+}
+
 /* Liste à puce des CGU */
 .circle{
     list-style-type: circle;
@@ -78,7 +82,7 @@ Footer section{
     border-color: black;
 }
 
-/* Masquage d'un bug avec CKEditor */
+/* Masquage d'un bug de CKEditor */
 #cke_1_bottom{
     display: none;
 }

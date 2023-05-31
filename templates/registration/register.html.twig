@@ -32,8 +32,8 @@
                     </div>
 
                     {# Checkbox d'acceptation des CGU avec lien vers ces dernières #}
-                    {{ form_row( registrationForm.agreeTerms ) }}
-                    <a href="{{ path('terms_of_service') }} " class="text-dark ms-5">CGU</a>
+                        <div class="d-flex mt-3">{{ form_row( registrationForm.agreeTerms) }}
+                        <a href="{{ path('terms_of_service') }} " class="text-dark ms-2"> CGU</a></div>
 
                     {{ form_row( registrationForm.save ) }}
 
