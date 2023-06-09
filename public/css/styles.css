@@ -19,7 +19,7 @@ body{
     background-position: right;
 }
 
-/* Les items "Mon Compte" et "Publications" qui sont des paragraphes, bénéficient d'un curseur "main" comme les autres liens de la navbar */
+/* Les items "Mon Compte" et "Publications" bénéficient d'un curseur "main" comme les autres liens de la navbar au déroulement du menu burger */
 .cursor-pointer{
     cursor: pointer;
 }
@@ -33,14 +33,27 @@ body{
     ::placeholder {
         font-size: 0.8rem;
     }
+
+    .no-pointer{
+        pointer-events: none;
+    }
 }
 
-/* Réduction de taille de police des indications dans les champs de saisie à partir de l'apparition du "menu burger" Bootstrap */
+/* Réduction de taille de police des indications dans les champs de saisie à partir de l'apparition du "menu burger" Bootstrap et réglage de l'affichage des fenêtres */
 @media (max-width: 992px) {
     ::placeholder {
         font-size: 0.7rem;
     }
+
+    .dropdown-menu{
+        width: max-content;
+    }
+
+    .nav-link{
+        display: inline-block;
+    }
 }
+
 /* Inclusion de trois points de suspension si les indications dans les champs de saisie sont coupés */
 input:placeholder-shown {
     text-overflow: ellipsis;

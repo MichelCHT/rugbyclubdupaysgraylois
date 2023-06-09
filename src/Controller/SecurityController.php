@@ -81,7 +81,7 @@ class SecurityController extends AbstractController
 
                 // Envoi du mail
                 $mail->send(
-                    'nepasrepondre@rcpg.fr',
+                    'nepasrepondre@rugbyclubdupaysgraylois.fr',
                     $user->getEmail(),
                     'Réinitialisation de votre mot de passe sur le site du Rugby Club du Pays Graylois',
                     'password_reset',

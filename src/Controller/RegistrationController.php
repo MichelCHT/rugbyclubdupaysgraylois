@@ -91,7 +91,7 @@ class RegistrationController extends AbstractController
 
                 // Envoi d'un mail à valider
                 $mail->send(
-                    'nepasrepondre@rcpg.fr',
+                    'nepasrepondre@rugbyclubdupaysgraylois.fr',
                     $user->getEmail(),
                     'Activation de votre compte sur le site du Rugby Club du Pays Graylois',
                     'register',
@@ -179,7 +179,7 @@ class RegistrationController extends AbstractController
 
         // Envoi d'un mail à valider
         $mail->send(
-            'nepasrepondre@rcpg.fr',
+            'nepasrepondre@rugbyclubdupaysgraylois.fr',
             $user->getEmail(),
             'Activation de votre compte sur le site du Rugby Club du Pays Graylois',
             'register',
